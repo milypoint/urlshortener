@@ -49,7 +49,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'POST urls' => 'urls/create',
-                'GET r/<code:[a-zA-Z0-9]+>' => 'urls/view',
+                'GET <code:[a-zA-Z0-9]+>' => 'urls/view',
                 'OPTIONS urls' => 'urls/options',
                 'OPTIONS urls/<code:[a-zA-Z0-9]+>' => 'urls/options',
             ],
