@@ -3,18 +3,18 @@
 namespace app\controllers;
 
 use app\helpers\UrlShortenerHelper;
-use app\models\Urls;
+use app\models\Url;
 use Yii;
 use yii\rest\ActiveController;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class UrlsController extends ActiveController
+class UrlController extends ActiveController
 {
     /**
      * {@inheritdoc}
      */
-    public $modelClass = Urls::class;
+    public $modelClass = Url::class;
 
     /**
      * {@inheritdoc}
@@ -29,17 +29,17 @@ class UrlsController extends ActiveController
     }
 
     /**
-     * @return Urls
+     * @return Url
      */
-    public function actionCreate(): Urls
+    public function actionCreate(): Url
     {
         $postData = Yii::$app->request->post('url');
-        $model = Urls::find()
+        $model = Url::find()
             ->byUrl($postData)
             ->one()
         ;
         if ($model === null) {
-            $model = new Urls();
+            $model = new Url();
             $model->url = $postData;
             $model->save();
         }
@@ -53,7 +53,7 @@ class UrlsController extends ActiveController
      */
     public function actionView($code): Response
     {
-        $model = Urls::findOne(UrlShortenerHelper::codeToId($code));
+        $model = Url::findOne(UrlShortenerHelper::codeToId($code));
         if ($model === null) {
             throw new NotFoundHttpException;
         }

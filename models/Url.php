@@ -3,23 +3,23 @@
 namespace app\models;
 
 use app\helpers\UrlShortenerHelper;
-use app\models\queries\UrlsQuery;
+use app\models\queries\UrlQuery;
 use yii\db\ActiveRecord;
-use yii\helpers\Url;
+use yii\helpers\Url as UrlHelper;
 
 /**
  * This is the model class for table "urls".
  *
  * @property string|null $url
  */
-class Urls extends ActiveRecord
+class Url extends ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'urls';
+        return 'url';
     }
 
     /**
@@ -28,9 +28,9 @@ class Urls extends ActiveRecord
     public function fields()
     {
         return [
-            'code' => function (Urls $model) {
-                return Url::to([
-                    'urls/view',
+            'code' => function (Url $model) {
+                return UrlHelper::to([
+                    'url/view',
                     'code' => UrlShortenerHelper::idToCode($model->primaryKey)
                 ], true);
             }
@@ -51,6 +51,6 @@ class Urls extends ActiveRecord
 
     public static function find()
     {
-        return new UrlsQuery(get_called_class());
+        return new UrlQuery(get_called_class());
     }
 }

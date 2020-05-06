@@ -24,7 +24,7 @@ $config = [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+//            'errorAction' => 'site/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -48,10 +48,10 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'POST urls' => 'urls/create',
-                'GET <code:[a-zA-Z0-9]+>' => 'urls/view',
-                'OPTIONS urls' => 'urls/options',
-                'OPTIONS urls/<code:[a-zA-Z0-9]+>' => 'urls/options',
+                'POST /' => 'url/create',
+                'GET /<code:[a-zA-Z0-9]+>' => 'url/view',
+                'OPTIONS /' => 'url/options',
+                'OPTIONS /<code:[a-zA-Z0-9]+>' => 'url/options',
             ],
         ],
     ],

@@ -4,11 +4,11 @@ namespace app\models\queries;
 
 use yii\db\ActiveQuery;
 
-class UrlsQuery extends ActiveQuery
+class UrlQuery extends ActiveQuery
 {
     /**
      * @param string $url
-     * @return UrlsQuery
+     * @return UrlQuery
      */
     public function byUrl($url)
     {
